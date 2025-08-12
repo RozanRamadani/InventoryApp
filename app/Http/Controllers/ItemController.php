@@ -15,4 +15,22 @@ class ItemController extends Controller
             'items' => $items,
         ]);
     }
+
+    public function create()
+    {
+        // Logic to show the item creation form
+        return inertia('Items/create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'qty' => 'required|numeric|digits_between:1,6',
+        ]);
+
+        Item::create($request->all());
+
+        return redirect()->route('items.index')->with('succes', 'item created succesfully');
+    }
 }
