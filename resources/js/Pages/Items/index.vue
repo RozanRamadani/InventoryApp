@@ -27,6 +27,9 @@ defineProps({
                                 Add New Item
                             </a>
                         </PrimaryButton>
+                        <div v-if="$page.props.flash.success" class="bg-green-100 border border-green-400 text-black px-4 py-3 mt-2 rounded relative" role="alert">
+                            {{ $page.props.flash.success }}
+                        </div>
                         <table class="table-auto w-full mt-4 bg-white border border-gray-200">
                             <thead class="bg-gray-100">
                                 <tr class="text-left">

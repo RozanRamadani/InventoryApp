@@ -31,6 +31,6 @@ class ItemController extends Controller
 
         Item::create($request->all());
 
-        return redirect()->route('items.index')->with('succes', 'item created succesfully');
+        return redirect()->route('items.index')->with('success', 'Item Created Succesfully');
     }
 }

@@ -33,12 +33,14 @@ const submitForm = () => {
                                 <input type="text" id="name" v-model="form.name"
                                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     required>
+                                    <div class="bg-red-100 border border-red-400 text-black p-2 mt-2 rounded" v-if="form.errors.name">{{ form.errors.name }}</div>
                             </div>
                             <div class="mb-4">
                                 <label for="qty" class="block text-sm font-medium text-gray-700">Quantity</label>
                                 <input type="number" id="qty" v-model="form.qty"
                                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     required>
+                                <div class="bg-red-100 border border-red-400 text-black p-2 mt-2 rounded" v-if="form.errors.qty">{{ form.errors.qty }}</div>
                             </div>
                             <PrimaryButton type="submit">Create Item</PrimaryButton>
                         </form>
