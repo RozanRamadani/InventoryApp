@@ -36,6 +36,7 @@ defineProps({
                                     <th class="px-4 py-2">#</th>
                                     <th class="px-4 py-2">Name</th>
                                     <th class="px-4 py-2">Qty</th>
+                                    <th class="px-4 py-2">Unit</th>
                                     <th class="px-4 py-2">Action</th>
                                 </tr>
                             </thead>
@@ -44,9 +45,11 @@ defineProps({
                                     <td class="border px-4 py-2">{{ ++index }}</td>
                                     <td class="border px-4 py-2">{{ item.name }}</td>
                                     <td class="border px-4 py-2">{{ item.qty }}</td>
+                                    <td class="border px-4 py-2">{{ item.unit }}</td>
                                     <td class="border px-4 py-2">
-                                        <button class="text-blue-500 hover:underline">Edit</button> |
-                                        <button class="text-yellow-500 hover:underline ml-2">Stock Card</button>
+                                        <a :href="`/items/${item.id}/edit`" class="text-blue-500 hover:underline">Edit</a> |
+                                        <a href="" class="text-green-500 hover:underline">Edit Stock</a> |
+                                        <a href="" class="text-yellow-500 hover:underline ml-2">Stock Card</a>
                                     </td>
                                 </tr>
                             </tbody>
