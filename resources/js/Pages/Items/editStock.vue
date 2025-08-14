@@ -12,8 +12,8 @@ const props = defineProps({
 })
 
 const form = useForm({
-    name: props.item.name,
-    unit: props.item.unit,
+    qty: props.item.qty,
+    note: ''
 });
 
 const submitForm = () => {
@@ -27,7 +27,7 @@ const submitForm = () => {
     <authenticated-layout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                Edit Items
+                Edit Stock Items : {{ props.item.name }}
             </h2>
         </template>
         <div class="py-12">
@@ -36,18 +36,17 @@ const submitForm = () => {
                     <div class="p-6 text-gray-900">
                         <form @submit.prevent="submitForm">
                             <div class="mb-4">
-                                <label for="name" class="block text-sm font-medium text-gray-700">Item Name</label>
-                                <input type="text" id="name" v-model="form.name"
+                                <label for="qty" class="block text-sm font-medium text-gray-700">Quantity</label>
+                                <input type="number" id="qty" v-model="form.qty"
                                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     required>
                                     <div class="bg-red-100 border border-red-400 text-black p-2 mt-2 rounded" v-if="form.errors.name">{{ form.errors.name }}</div>
                             </div>
                             <div class="mb-4">
-                                <label for="unit" class="block text-sm font-medium text-gray-700">Unit</label>
-                                <input type="text" id="unit" v-model="form.unit"
-                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                    required>
-                                <div class="bg-red-100 border border-red-400 text-black p-2 mt-2 rounded" v-if="form.errors.unit">{{ form.errors.unit }}</div>
+                                <label for="note" class="block text-sm font-medium text-gray-700">Note</label>
+                                <input type="radio" id="note" v-model="form.note" class="mr-1" value="in"> In
+                                <input type="radio" id="note" v-model="form.note" class="mr-1" value="out"> Out
+                                <div class="bg-red-100 border border-red-400 text-black p-2 mt-2 rounded" v-if="form.errors.note">{{ form.errors.note }}</div>
                             </div>
                             <PrimaryButton type="submit">Create Item</PrimaryButton>
                         </form>

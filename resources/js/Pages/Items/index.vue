@@ -48,7 +48,7 @@ defineProps({
                                     <td class="border px-4 py-2">{{ item.unit }}</td>
                                     <td class="border px-4 py-2">
                                         <a :href="`/items/${item.id}/edit`" class="text-blue-500 hover:underline">Edit</a> |
-                                        <a href="" class="text-green-500 hover:underline">Edit Stock</a> |
+                                        <a :href="`/items/${item.id}/edit-stock`" class="text-green-500 hover:underline">Edit Stock</a> |
                                         <a href="" class="text-yellow-500 hover:underline ml-2">Stock Card</a>
                                     </td>
                                 </tr>
