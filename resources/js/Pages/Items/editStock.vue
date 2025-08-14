@@ -28,7 +28,7 @@ const submitForm = () => {
     <authenticated-layout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                Edit Stock Items : {{ props.item.name }}
+                Edit Stock Items : {{ props.item.name }} ( {{ props.item.qty }} {{ props.item.unit }} )
             </h2>
         </template>
         <div class="py-12">
