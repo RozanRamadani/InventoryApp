@@ -49,7 +49,7 @@ const submitForm = () => {
                                     required>
                                 <div class="bg-red-100 border border-red-400 text-black p-2 mt-2 rounded" v-if="form.errors.unit">{{ form.errors.unit }}</div>
                             </div>
-                            <PrimaryButton type="submit">Create Item</PrimaryButton>
+                            <PrimaryButton type="submit">Edit Item</PrimaryButton>
                         </form>
                     </div>
                 </div>

@@ -65,4 +65,23 @@ class ItemController extends Controller
             'item' => $item,
         ]);
     }
+
+    public function updateStock(Request $request, $id)
+    {
+        $request->validate([
+            'qty' => 'required|numeric|digits_between:1,6',
+            'note' => 'required|in:in,out', // Validate the 'note' field to be either 'in' or 'out'
+            'description' => 'nullable|string|max:500', // Optional description field
+        ]);
+
+        $item = Item::findOrFail($id);
+        if ($request->note === 'in') {
+            $item->qty += $request->qty; // Increase stock
+        } else {
+            $item->qty -= $request->qty; // Decrease stock
+        }
+        $item->save();
+
+        return redirect()->route('items.index')->with('success', 'Stock Updated Successfully');
+    }
 }
