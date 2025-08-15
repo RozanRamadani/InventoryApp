@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/items/{id}', [ItemController::class, 'update'])->name('items.update');
     Route::get('/items/{id}/edit-stock', [ItemController::class, 'editStock'])->name('items.edit-stock');
     Route::patch('/items/{id}/update-stock', [ItemController::class, 'updateStock'])->name('items.update-stock');
-    
+    Route::get('/items/{id}/stock-card', [ItemController::class, 'stockCard'])->name('items.stock-card');
 });
 
 require __DIR__.'/auth.php';

@@ -11,4 +11,9 @@ class Item extends Model
         'qty',
         'unit',
     ];
+
+    public function stockCards()
+    {
+        return $this->hasMany(StockCard::class);
+    }
 }

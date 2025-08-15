@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class StockCard extends Model
 {
-    //
+    protected $fillable = [
+        'item_id',
+        'qty',
+        'note',
+        'description',
+    ];
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

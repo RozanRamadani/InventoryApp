@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\StockCard;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -77,11 +78,32 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         if ($request->note === 'in') {
             $item->qty += $request->qty; // Increase stock
-        } else {
+        } else if ($request->note === 'out') {
+            if ($item->qty < $request->qty) {
+                return redirect()->back()->withErrors(['qty' => 'Stock out extends available quantity']);
+            }
             $item->qty -= $request->qty; // Decrease stock
         }
         $item->save();
 
+        //Update Stock Card
+        StockCard::create([
+            'item_id' => $item->id,
+            'qty' => $request->qty,
+            'note' => $request->note,
+            'description' => $request->description,
+        ]);
+
         return redirect()->route('items.index')->with('success', 'Stock Updated Successfully');
+    }
+
+    public function stockCard($id)
+    {
+        // Logic to show the stock card for the item
+        $item = Item::findOrFail($id)->loadMissing('stockCards');
+
+        return inertia('Items/stockCard', [
+            'item' => $item
+        ]);
     }
 }
